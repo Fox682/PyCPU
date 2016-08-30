@@ -1,0 +1,22 @@
+ld ax,1
+ld bx,1
+inc ax
+inc bx
+jmp -3,0
+0
+
+
+######
+Notes: - put notes after '0'
+
+- CPU and Compiler will stop at '0'
+- JMP MUST include  ",0" (Bug) or it will not compile
+- NOP must also include 0,0 (Bug) or it will not compile
+
+How JMP instruction is calculated
+
+1- inc ax,0   	- 1st <- jmps here-#3
+2- inc bx,0   	- 2nd <------------#2
+3 - jmp -3,0  	- 3rd <- counts as #1
+nop 0,0			- 0,0 for No-OP doesn't do anything but prevent Compiler Errors
+0				- Halts CPU & Compiler!
