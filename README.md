@@ -37,11 +37,10 @@ Note:
 The cpu is a emulator of sorts, it is not meant to be fast in any sence of the word. 
 It is however a good intro for programming in assembly (when fleshed out).
 
-- Research into Minimalistic VMs with networking
-- Potential for Custom Protocal Examination
-
+Future use case:
+- Research into Minimalistic VMs with Networking
+- Potential for Custom Protocol Examination
 
 Disclaimer:
-- Not fit for any use whatsoever do not use in production
+- Not fit for any use whatsoever, do not use in production.
 - Any Suggestions or feedback appreciated, don't expect a reply in any reasonable amount of time
-=================================================================================================
