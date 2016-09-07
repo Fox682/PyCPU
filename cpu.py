@@ -14,11 +14,17 @@ ax = 0
 bx = 0
 cx = 0
 dx = 0
+cmp = 0
 #Counters
 pc = 0
 clk = 0
 on = 1
 #####
+###
+flag = 0 #Use an int use str(flag) to convert it to a string
+#Flag for CMP  values
+# 1 "==", 2 "!=", 3 ">", 4 "<"
+
 
 lines = [line.rstrip('\n') for line in open('outfile2')] #creates array with char values from text file
 #print (lines)
@@ -109,6 +115,7 @@ while on == 1:
             pc = pc + 1
             clk = clk + 1
 ##### ADD IMMEDIATE VALUE - AX <-> BX
+##### Works, not sure if I want to implement this...
 #        if e1 == "3111": #ADD AX,IMM
 #            ax = int(bx)+int(e2)
 #            pc = pc + 1
@@ -124,13 +131,21 @@ while on == 1:
             pc = acc
             clk = clk + 1
             e1 = e2 = 0  #Clear these if you do!
+##### CMP
+        if e1 == "241112" and int(ax) == int(bx):
+            flag = 1
+#        if e1 == "241112" and int(ax) != int(bx): #Going to have to figure this one out...
+#            flag = 2
+        if e1 == "241112" and int(ax) > int(bx):
+            flag = 3
+        if e1 == "241112" and int(ax) < int(bx):
+            flag = 4
 ##### Status      
         print("=====================")
         print("AX= "+ str(ax), "BX= "+ str(bx))
         print("CLK= "+str(clk), " PC= "+ str(pc))
-        print("OpCode= "+str(e1) )
-        print("Param = "+str(e2) )
-        print("Array = " + str(acc) )
+        print("OpCode = "+str(e1) + " Param = " +str(e2))
+        print("Array = " + str(acc) + " Flag = " + str(flag))    
         e1 = e2 = 0 # Reset this to fix Execution Bug (extra clock at end of program)
     
 ###

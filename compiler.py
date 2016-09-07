@@ -11,15 +11,19 @@ s1 = 0
 s2 = 0
 e1 = 0
 e2 = 0
+
 #Regs (10)
 ax = '11'
 bx = '12'
 cx = '13'
 dx = '14'
+
 #Ops (20)
 ld = '21' #Loads val to Reg
-st = 22 #Store Reg to Location in array
-mov = 23 #Moves Reg to Reg
+st = '22' #Store Reg to Location in array
+mov = '23' #Moves Reg to Reg
+cmp = '24' #Compares values to set flag
+
 #Math (30) - Between Regs Only (for now)
 add = '31'
 inc = '32'
@@ -27,6 +31,7 @@ sub = '33'
 mul = '34'
 div = '35'
 dec = '36'
+
 #Other
 nop = '99'
 jmp = '1000'
@@ -46,16 +51,17 @@ while tgl == 1:
 #Split lines to process Commands
     try: 
         s1, s2 = a.split(' ')
-#        print (s1+" <- s1")
-#        print (s2+" <- s2")
+        print (s1+" <- s1")
+        print (s2+" <- s2")
     except:
-        print ("Error processing Command")
+        print ("Exception Processed A")
+###
     try:
         e1, e2 = s2.split(',')
-#        print (e1+" <- e1")
-#        print (e2+" <- e2")
+        print (e1+" <- e1")
+        print (e2+" <- e2")
     except:
-        print ("Error processing Parameters.")
+        print ("Exception Processed B.")
 #### Instruction Processing ####
 #### Load AX & BX
     if s1 == 'ld' and e1 =='ax':
@@ -68,11 +74,6 @@ while tgl == 1:
 #    if a == 'mov':
  #       outarray.append(mov)
 #### Maths
-#### ADD AX <-> BX
-#    if s1 == 'add' and e1 == 'ax' and e2 != 'bx':
-#        outarray.append(add+ax+'.'+e2)
-#    if s1 == 'add' and e1 == 'bx' and e2 != 'ax':
-#        outarray.append(add+bx+'.'+e2)
 #### ADD AX  <-> BX
     if s1 == 'add' and e1 == 'ax' and e2 == 'bx':
         outarray.append(add+ax+bx+'.0')
@@ -103,19 +104,47 @@ while tgl == 1:
         outarray.append(dec+ax+'.0')
     if s1 == 'dec' and s2 == 'bx':
         outarray.append(dec+bx+'.0')
-#### JMP & NOP
+#### JMP
     if s1 == 'jmp':
-        outarray.append('1000'+'.'+ e1)
-    if s1 =='nop':
-        outarray.append('99.0')
+        outarray.append(jmp+'.'+ str(s2) )  
+### NOP doesn't work...
+#    if s1 == 'nop':
+#        outarray.append('99'+'0.0')
+### CMP 
+    if s1 == 'cmp' and e1 == 'ax' and e2 == 'bx':
+        outarray.append(cmp+ax+bx+'.0')
+    if s1 == 'cmp' and e1 == 'bx' and e2 == 'ax':
+        outarray.append(cmp+bx+ax+'.0')        
+#        outarray.append()
 #### 
 #### CMP EAX and EBX for ==, >, <
 #### 
 
 
 #### Other
-outarray.pop() #Fixes duplicate entry and end of array (bug)
+outarray.pop() #Fixes duplicate entry at end of array (bug)
 outarray.append('0') #Tells the CPU & Compiler to stop
+
+### 2nd Pass for JMPs to have Labels
+### Ensure Above works before doing this...
+#while tgl == 1:
+#    a = lines[acc] #Array + value in [slot]
+# #   print (a) #print the array value
+#    acc+=1 #increment the counter
+#    if a == '0': #not actual value but ASCII value...
+#        tgl = 0 #Stops the While loop when a == 0!
+# 
+# Need to count the distance between the Labels
+#
+#
+# Iterate over the Array
+#Scan for Labels [Pick a format for them]
+# Use the Split above to split the jmp and the Value
+# if  a = "jmp" 
+# then Use s2 to track the labels
+
+
+
 
 #print(outarray)
 ###
