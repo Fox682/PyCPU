@@ -35,6 +35,9 @@ dec = '36'
 #Other
 nop = '99'
 jmp = '1000'
+je = '1001'
+jg = '1002'
+jl = '1003'
 
 output = open('outfile2','w')
 outarray = [0 for x in range(0)] #Create array with NOTHING in it
@@ -107,17 +110,26 @@ while tgl == 1:
 #### JMP
     if s1 == 'jmp':
         outarray.append(jmp+'.'+ str(s2) )  
-### NOP doesn't work...
-#    if s1 == 'nop':
-#        outarray.append('99'+'0.0')
+#### Conditional JMPs
+# JE - Jump if Equal
+    if s1 == 'je':
+        outarray.append(je+'.'+ str(s2) )    
+#JG - Jump if Greater
+    if s1 == 'jg':
+        outarray.append(jg+'.'+ str(s2) )
+#JL - Jump if Less than
+    if s1 == 'jl':
+        outarray.append(jl+'.'+ str(s2) )
+##
+### NOP doesn't work... try again
+    if s1 == 'nop':
+        outarray.append(nop +'.0')
 ### CMP 
     if s1 == 'cmp' and e1 == 'ax' and e2 == 'bx':
         outarray.append(cmp+ax+bx+'.0')
     if s1 == 'cmp' and e1 == 'bx' and e2 == 'ax':
         outarray.append(cmp+bx+ax+'.0')        
-#        outarray.append()
 #### 
-#### CMP EAX and EBX for ==, >, <
 #### 
 
 
