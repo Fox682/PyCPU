@@ -23,7 +23,8 @@ Current Progress: (for both "AX" & "BX" Registers)
 "infile2" includes more instructions on how to use the cpu.py.
 
 Planned:
-- Both scripts need cleaned up to input files specified... or leave them, Flags are odd... will fix
+- Both scripts need cleaned up to input files specified... or leave them. 
+- CMP Flags are odd... will fix (Low Priority as it works currently)
 - MOV Instruction
 - 2 more Registers
 - Screen Output
