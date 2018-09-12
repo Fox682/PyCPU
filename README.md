@@ -2,7 +2,8 @@
 Python Script to run an Assembly like language
 
 ==================================
-PyCPU
+
+## PyCPU
 - Runs Assembly like language 
 - cpu.py is the actual CPU
 - compile.py is the Compiler
