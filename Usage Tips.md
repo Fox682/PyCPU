@@ -69,7 +69,7 @@ And finally, the very bottom, with the numbers "99" in this example. This is act
 
 ### Troubleshooting:
 
-"My responses are limited, you must ask the right questions." - Dr. Alfred Lanning - I, Robot
+> "My responses are limited, you must ask the right questions." - Dr. Alfred Lanning - I, Robot
 
 I've done what I can to make the compiler.py and the cpu.py have some minor robustness to them, however if you're going to spend some time with this, you're likely to hit on some odd points of irritation or just plain frustration. So in an effort to help alieviate some of the pain, here are some common Issues you may run into.
 
@@ -116,7 +116,7 @@ IndexError: list assignment index out of range
 
 The "RAM" is just another list, so if you go outside the bounds, it's not gonna like it. 
 
-- "Program Terminated"
+> "Program Terminated"
 
 
 [To be Continued]
