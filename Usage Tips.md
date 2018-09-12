@@ -95,7 +95,7 @@ Traceback (most recent call last):
     outarray.pop() #Fixes duplicate entry at end of array (bug)
 IndexError: pop from empty list
 ```
-If you've got more than one line some with invalid instructions, the result won't crash the compiler, but it won't process things right and you might end up with only one instruction processed after the broken ones. Double and Triple check to make sure you've got the right instructions.
+If you've got more than one line some valid and some with invalid instructions, the result won't crash the compiler, but it won't process things right and you might end up with only one instruction processed after the broken ones. Double and Triple check to make sure you've got the right instructions.
 
 If you missed the math on the Stack OR writing to the wrong memory (ie, with the memory filling program in the ```infile```), were gonna have a fun time with another error.
 
