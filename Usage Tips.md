@@ -1,4 +1,4 @@
-## Usage Tips
+#Usage Tips
 ---------
 
 The CPU runs a variant of Assembly modeled after the NASM style, if you've ever used NASM this should be a cake walk.
@@ -66,6 +66,52 @@ And finally, the very bottom, with the numbers "99" in this example. This is act
 - Later we will Add labels when they're available.
 
 If you get lost, crack open the compiler.py in your favorite editor (notepad++ is good) or atom (for linux) in my case, and see what instructions are there. Feel free to change stuff, if you got something even slightly interesting for the cpu or a program, feel free to send me the code, I'll put it here with your name (or alias) on it.
+
+- The Troubleshooting section is below if you need it.
+
+### Instruction Rundown
+- Quick and dirty rundown of instructions
+
+```
+#Regs (10)
+ax = AX Register
+bx = BX Register
+bp = Base Pointer (unmodifyable at the moment)
+sp = Stack Pointer (pop and push)
+
+#Ops (20)
+ld = Load from Memory location
+ldr = Load using REG reference
+ldi = Loads Immediate Value to REG
+st = Store Reg to Location in memory
+str = Store REG using REG reference
+mov = Moves Reg to Reg (unimplemented at the moment)
+cmp = Compares values to set flag
+
+#Math (30)
+adi = Add Immediate value, sum another value to a register
+add = Add registers together, result in Destination Register
+sub = Subtract registers together, result in Destination Register
+mul = Multiply registers together, result in Destination Register
+div = Divide registers together, result in Destination Register
+inc = Increment value in Register
+dec = Decrement value in Register
+
+
+#Stack Ops (40)
+push = PUSHes a Value in the Register to the stack (end of memory)
+pop = POPs a Value from the stack to a register
+
+#Branching
+jmp = Jump, manipulates the Program Counter, jump to another instruction
+je = Jump if Equal
+jg = Jump if Greater than
+jl = Jump if Less than
+
+#Other
+nop = A No OPeration instruction, useful if you need to burn time and/or for debugging
+```
+
 
 ### Troubleshooting:
 
