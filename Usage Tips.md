@@ -63,11 +63,61 @@ should correspond to the line number. The PC will go wherever you've told it, es
 The next line ```Array = 8 CMP F = 13```, Array was for debugging, I've not removed it yet. the ```CMP F = 13``` however is 
 actually useful, it tells us what flag CMP was used for (ie. Greater than, Less than, Equal, etc.).
 
-And finally, the very bottom, with the numbers "99" in this example. This is actually the "RAM" in the CPU, the value here is pretty
-small and is updated to show you the raw contents of the memory. As of current, the Registers and other values are not stored in the
-same memory (future note here). 
+And finally, the very bottom, with the numbers "99" in this example. This is actually the "RAM" in the CPU, the value here is pretty small and is updated to show you the raw contents of the memory. As of current, the Registers and other values are not stored in the same memory (future note here). 
 
 - Later we will Add labels when they're available.
+
+### Troubleshooting:
+
+"My responses are limited, you must ask the right questions." - Dr. Alfred Lanning - I, Robot
+
+I've done what I can to make the compiler.py and the cpu.py have some minor robustness to them, however if you're going to spend some time with this, you're likely to hit on some odd points of irritation or just plain frustration. So in an effort to help alieviate some of the pain, here are some common Issues you may run into.
+
+- Invalid instructions that follow the format will be ignored, the following will be successfully ignored by the compiler, and the resulting instruction list may be empty.
+
+```
+lol wat,wut
+0
+```
+
+Yeah... I don't think so, makes an empty instruction list, hence the python error (we can't pop from an empty list, d'oh!):
+
+```
+lol <- s1
+wat,wut <- s2
+wat <- e1
+wut <- e2
+Exception Processed B.
+wat <- e1
+wut <- e2
+Traceback (most recent call last):
+  File "compiler.py", line 235, in <module>
+    outarray.pop() #Fixes duplicate entry at end of array (bug)
+IndexError: pop from empty list
+```
+If you've got more than one line some with invalid instructions, the result won't crash the compiler, but it won't process things right and you might end up with only one instruction processed after the broken ones. Double and Triple check to make sure you've got the right instructions.
+
+If you missed the math on the Stack OR writing to the wrong memory (ie, with the memory filling program in the ```infile```), were gonna have a fun time with another error.
+
+```
+=========================
+AX = 25 BX = 99
+SP = 24 BP = 24
+CLK = 77  PC = 2
+OpCode = 0 Param = 0
+Array = 2 CMP F = 0
+=========================
+[99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99, 99]
+Traceback (most recent call last):
+  File "cpu.py", line 101, in <module>
+    mem[ax] = bx
+IndexError: list assignment index out of range
+```
+
+The "RAM" is just another list, so if you go outside the bounds, it's not gonna like it. 
+
+- "Program Terminated"
+
 
 [To be Continued]
 
