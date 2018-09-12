@@ -1,25 +1,116 @@
-ldi ax,1
-ldi bx,2
-push bx
-push ax
 ldi ax,0
-ldi bx,0
-pop ax
+ldi bx,99
+str ax,bx
+inc ax
+push bx
+ldi bx,24
+cmp ax,bx
+je 2
 pop bx
-push ax
-push bx
-push ax
-push bx
-push ax
-push bx
-push ax
-push bx
-push ax
-push bx
-push ax
-push bx
-push ax
-push bx
-push ax
-push bx
+jmp -8
 0
+
+########### Test Programs ########
+- Count to 5 and back to 0
+- Repeat
+
+ldi ax,0
+ldi bx,5
+inc ax
+cmp ax,bx
+je 1
+jmp -4
+ldi bx,0
+dec ax
+cmp ax,bx
+je -9
+jmp -4
+0
+
+######
+- Fill up the memory
+# Will Crash the CPU!
+# WARNING: No bounds checking for memory
+# Will throw an error in python, the CPU is functioning as expected
+
+ldi ax,0
+ldi bx,99
+str ax,bx
+inc ax
+jmp -3
+0
+
+# This version won't crash the CPU
+# Uses the Stack
+
+ldi ax,0
+ldi bx,99
+str ax,bx
+inc ax
+push bx
+ldi bx,24
+cmp ax,bx
+je 2
+pop bx
+jmp -8
+0
+
+
+
+######
+
+
+Notation Rules:
+
+1. Do the Notes
+2. Compiler will tolerate spaces in the Code
+-- If you want in-line notes use a space after the instructions and with #
+
+eg. add ax,bx #Notes like This
+
+- In-line is OK!
+
+add ax,bx
+#Note here, include the "#" mark before the notes
+cmp ax,bx
+
+jmp -3 #Spaces are OK!
+0
+
+You can put notes after '0' in ANY way you like
+- Compiler and CPU will NOT process any instructions after "0"
+
+- NOP WILL work however you need a 0 next to it
+nop 0  <-- include the Zero
+
+#Bug in how the Instruction Splitting is handled (Low Priority)
+
+----- IMPORTANT: How JMP instruction is calculated -----
+
+Jumping is Relative to the point from which you jmp
+- For NEGATIVE Jumping (Back/Up)
+
+inc ax,0   	<-- jumps here  jmp -3
+inc bx,0   	<-------------- jmp -2
+jmp -3  	  <-------------- jmp -1
+0				    - Halts CPU & Compiler!
+
+- For POSITIVE Jumping (Forward/Down)
+
+jmp 1     	- Skips
+inc ax	 <----- jmp 0
+inc ax	 <----- jmp 1
+inc ax	 <----- jmp 2
+inc ax   <----- jmp 3
+0
+
+#Not a bug, Expected Behavior
+
+####################
+Code Notes:
+
+Adjust the Speed of the CPU using the SLEEP instruction in the Python Code
+- Not recommended to use sleep for anything more than 10 khz (0.0001) as it WILL BOG DOWN YOUR CPU
+---->>>> This is because it is outputting to the Console
+---->>>> Comment out the bottom print lines at the end of cpu.py for more performance
+---->>>> You can remove the sleep() line and it will Freewheel the CPU
