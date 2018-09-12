@@ -32,7 +32,7 @@ Current Progress: (for both "AX" & "BX" Registers)
 - SP Stack Pointer (Stack Grows in Reverse)
 - BP Base Pointer  (Stack Manipulation)
 
-"infile" includes more instructions on how to use the cpu.py.
+The "infile" includes more instructions on how to use the cpu.py. Feel free to edit and or remove this to replace it with your own.
 
 Planned:
 - 2 more Registers (Tenative as this would balloon the code to run...)
