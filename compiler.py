@@ -132,7 +132,7 @@ while tgl == 1:
     if s1 == 'st' and e1 == 'bx':
         outarray.append(st+bx+'.'+e2)
 
-### Load REG Refferenced by REG
+### Load REG Referenced by REG
 ### Normally reference are handled like ld bx,[ax]. Feature request
     if s1 == 'ldr' and e1 == 'ax' and e2 == 'bx':
         outarray.append(ldr+ax+bx+'.0')
@@ -144,6 +144,7 @@ while tgl == 1:
         outarray.append(str+ax+bx+'.0')
     if s1 == 'str' and e1 == 'bx' and e2 == 'ax':
         outarray.append(str+bx+ax+'.0')
+
 ### Stack Operations
 ### PUSH
     if s1 == 'push' and s2 == 'ax':
