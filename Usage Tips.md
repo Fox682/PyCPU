@@ -16,9 +16,7 @@ An example of a valid instruction would be
 ```
 ldi ax,10
 ```
-The instruction ```ldi``` (LoaD Immediate value) into the destination ```ax``` (a register) with the value of ```10```. In other words it will load 
-into ```ax``` register the value of ```10```, so if you ran that single line on the CPU (add a zero on the newline!) you will end 
-up with this output:
+The instruction ```ldi``` (LoaD Immediate value) into the destination ```ax``` (a register) with the value of ```10```. In other words it will load into ```ax``` register the value of ```10```, so if you ran that single line on the CPU (add a zero on the newline!) you will end up with this output:
 
 ```
 =========================
@@ -66,6 +64,8 @@ actually useful, it tells us what flag CMP was used for (ie. Greater than, Less 
 And finally, the very bottom, with the numbers "99" in this example. This is actually the "RAM" in the CPU, the value here is pretty small and is updated to show you the raw contents of the memory. As of current, the Registers and other values are not stored in the same memory (future note here). 
 
 - Later we will Add labels when they're available.
+
+If you get lost, crack open the compiler.py in your favorite editor (notepad++ is good) or atom (for linux) in my case, and see what instructions are there. Feel free to change stuff, if you got something even slightly interesting for the cpu or a program, feel free to send me the code, I'll put it here with your name (or alias) on it.
 
 ### Troubleshooting:
 
