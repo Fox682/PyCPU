@@ -1,14 +1,37 @@
 ldi ax,0
-ldi bx,99
+ldi bx,10
 str ax,bx
 inc ax
 push bx
 ldi bx,24
 cmp ax,bx
-je 2
 pop bx
+je 1
 jmp -8
+ldi bx,0
+str ax,bx
+dec ax
+push bx
+ldi bx,0
+cmp ax,bx
+pop bx
+je 1
+jmp -8
+jmp -20
 0
+
+######### Stack Testing
+
+ldi ax,1
+ldi bx,10
+push ax
+inc ax
+cmp ax,bx
+je 1
+jmp -5
+0
+
+
 
 ########### Test Programs ########
 - Count to 5 and back to 0
@@ -28,7 +51,7 @@ jmp -4
 0
 
 ######
-- Fill up the memory
+- Fill Memory up
 # Will Crash the CPU!
 # WARNING: No bounds checking for memory
 # Will throw an error in python, the CPU is functioning as expected
@@ -48,14 +71,50 @@ ldi bx,99
 str ax,bx
 inc ax
 push bx
-ldi bx,24
+ldi bx,4
 cmp ax,bx
 je 2
 pop bx
 jmp -8
 0
 
+#Fill Memory with Stack
 
+ldi ax,1
+ldi bx,5
+push ax
+inc ax
+cmp ax,bx
+je 1
+jmp -5
+0
+
+#####
+- Fill with 1's and then empty the memory, loop
+- Fixed, pops and pushes didn't line up ;-)
+- Run with sleep(0.01), oooh aaaah
+
+ldi ax,0
+ldi bx,10
+str ax,bx
+inc ax
+push bx
+ldi bx,24
+cmp ax,bx
+pop bx
+je 1
+jmp -8
+ldi bx,0
+str ax,bx
+dec ax
+push bx
+ldi bx,0
+cmp ax,bx
+pop bx
+je 1
+jmp -8
+jmp -20
+0
 
 ######
 
