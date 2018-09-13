@@ -24,7 +24,9 @@ on = 1
 m = 25
 #Stack init
 bp = m-1
-sp = m-1
+sp = m
+#bp = 0
+#sp = 0
 ###
 flag = 0 #Use an int use str(flag) to convert it to a string
 #Flag for CMP  values
@@ -67,7 +69,7 @@ while on == 1:
             e2 = int(e2)
             ax = mem[e2]
             pc = pc + 1
-            clk =clk + 1
+            clk = clk + 1
         if e1 == "2012": #LD BX,[#]
             e2 = int(e2)
             bx = mem[e2]
@@ -106,29 +108,31 @@ while on == 1:
             mem[bx] = ax
             pc = pc + 1
             clk += 1
-### PUSH & POP
+#### Stack Mannipulation
+### PUSH
         if e1 == "4111": #PUSH AX
+            sp = sp - 1
             mem[sp] = ax
             pc = pc + 1
             clk = clk + 1
-            sp = sp - 1
+#            sp = sp - 1
         if e1 == "4112": #PUSH BX
+            sp = sp - 1
             mem[sp] = bx
             pc = pc + 1
             clk = clk + 1
-            sp = sp - 1
+#            sp = sp - 1
 ### POP
-        if e1 == "4211": #POP AX
-            sp = sp + 1
+        if e1 == "4211" and sp < (bp + 1) and sp > 0: #POP AX
             ax = mem[sp]
             pc = pc + 1
             clk = clk + 1
-        if e1 == "4212": #POP BX
             sp = sp + 1
+        if e1 == "4212" and sp < (bp + 1) and sp > 0: #POP BX
             bx = mem[sp]
             pc = pc + 1
             clk = clk + 1
-
+            sp = sp + 1
 ### Modify SP & BP with REG
 
 
@@ -288,6 +292,7 @@ while on == 1:
             flag = 23
             pc = pc + 1
             clk = clk + 1
+
 ############################################################
 
 ##### Status Print - Comment out for PERFORMANCE!
@@ -299,7 +304,10 @@ while on == 1:
         print("Array = " + str(acc) + " CMP F = " + str(flag))
         print("=========================")
         print(mem)
-## Don't remove below this line
-        e1 = e2 = s1 = s2 = 0 # Reset this to fix Execution Bug (extra clock at end of program)
+
+## Don't remove this line
+        e1 = e2 = 0 # Reset this to fix Execution Bug (extra clock at end of program)
+
+
 
 ###
