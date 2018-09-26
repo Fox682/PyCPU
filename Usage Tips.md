@@ -189,7 +189,7 @@ Now the results should be in bx instead! Observant assemblers will note that thi
 
 The limitations of the PyCPU are in place for two reasons, Python code run minimization and the sheer challange, after all that is why we do assembly, we love the challenge (and occasionally we work with very limited Microcontrollers)!
 
-Lets add 5 values together, since we only have 2 registers... we'll need, yup, the Stack. The Stack is extremely useful for this exact reason, we don't have a lot of registers available. Since addition is accumulative, this is fairly easy.
+Lets add 5 values together, since we only have 2 registers... we'll need some memory. The Stack is extremely useful for this exact reason, we don't have a lot of registers available and since addition is accumulative, this is fairly easy.
 
 ```
 ldi ax,5 #Load up the Stack with the values we want to add together
