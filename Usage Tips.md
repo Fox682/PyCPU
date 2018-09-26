@@ -70,7 +70,7 @@ If you get lost, crack open the compiler.py in your favorite editor (notepad++ i
 - The Troubleshooting section is below if you need it.
 
 ## Instruction Rundown
-- Quick and dirty rundown of instructions
+- Quick and dirty rundown of instructions (from the source)
 
 ```
 #Regs (10)
@@ -230,7 +230,7 @@ ld bx,4
 add ax,bx
 0
 ```
-#### More to come!
+**More to come!**
 
 [To be Continued]
 
