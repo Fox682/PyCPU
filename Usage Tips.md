@@ -201,6 +201,7 @@ push ax
 push bx
 ldi ax, 50
 push ax #Done!
+#
 pop ax #Start with setting initial values
 pop bx #Use bx for popping and adding
 add ax,bx
@@ -209,13 +210,26 @@ add ax,bx
 pop bx 
 add ax,bx
 pop bx
-add ax,bx
-pop bx
 add ax,bx #Done!
 0
+```
 
+The same can be done from stored values instead. Both use the same amount of memory, the stack uses the end of the memory, the load instruction can be used from any location in memory (stack is just more consistent).
 
+```
+#After values are stored to memory locations (eg. 0-4)
+ld ax,0
+ld bx,1
+add ax,bx
+ld bx,2
+add ax,bx
+ld bx,3
+add ax,bx
+ld bx,4
+add ax,bx
+0
 
+#### More to come!
 
 [To be Continued]
 
