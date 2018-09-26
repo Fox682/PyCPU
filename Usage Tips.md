@@ -168,7 +168,8 @@ The "RAM" is just another list, so if you go outside the bounds, it's not gonna 
 
 Here's some trick and things you can do with the CPU instructions. Since this CPU isn't as full featured as say x86 Assembly, we'll need to use some extra steps to do equivilent things.
 
-### XCHG (x86)
+**XCHG (x86)**
+
 The PyCPU doesn't have a way to exchange the registers using a single instruction however you can do it with the Stack! Say you loaded some values and you're doing some math, but you want the result in ```bx``` instead of ```ax``` (or any other register). You can exchange the values in both registers, using this:
 
 ```
@@ -184,7 +185,7 @@ pop bx #Done!
 
 Now the results should be in bx instead! Observant assemblers will note that this is exactly the opposite way you normally use the stack, by default you always pop the values in the exact opposite way you pushed them in the first place. But if you're purposefully exchanging the values, this is exactly ok.
 
-### Add Multiple values
+**Add Multiple values**
 
 The limitations of the PyCPU are in place for two reasons, Python code run minimization and the sheer challange, after all that is why we do assembly, we love the challenge (and occasionally we work with very limited Microcontrollers)!
 
@@ -228,7 +229,7 @@ add ax,bx
 ld bx,4
 add ax,bx
 0
-
+```
 #### More to come!
 
 [To be Continued]
