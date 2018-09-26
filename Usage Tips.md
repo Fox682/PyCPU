@@ -186,7 +186,33 @@ Now the results should be in bx instead! Observant assemblers will note that thi
 
 ### Add Multiple values
 
+The limitations of the PyCPU are in place for two reasons, Python code run minimization and the sheer challange, after all that is why we do assembly, we love the challenge (and occasionally we work with very limited Microcontrollers)!
 
+Lets add 5 values together, since we only have 2 registers... we'll need, yup, the Stack. The Stack is extremely useful for this exact reason, we don't have a lot of registers available. Since addition is accumulative, this is fairly easy.
+
+```
+ldi ax,5 #Load up the Stack with the values we want to add together
+ldi bx,10
+push ax
+push bx
+ldi ax,20
+ldi bx,30
+push ax
+push bx
+ldi ax, 50
+push ax #Done!
+pop ax #Start with setting initial values
+pop bx #Use bx for popping and adding
+add ax,bx
+pop bx
+add ax,bx
+pop bx 
+add ax,bx
+pop bx
+add ax,bx
+pop bx
+add ax,bx #Done!
+0
 
 
 
