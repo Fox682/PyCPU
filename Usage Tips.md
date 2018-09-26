@@ -1,4 +1,4 @@
-#Usage Tips
+# Usage Tips
 ---------
 
 The CPU runs a variant of Assembly modeled after the NASM style, if you've ever used NASM this should be a cake walk.
@@ -69,7 +69,7 @@ If you get lost, crack open the compiler.py in your favorite editor (notepad++ i
 
 - The Troubleshooting section is below if you need it.
 
-### Instruction Rundown
+## Instruction Rundown
 - Quick and dirty rundown of instructions
 
 ```
@@ -113,7 +113,7 @@ nop = A No OPeration instruction, useful if you need to burn time and/or for deb
 ```
 
 
-### Troubleshooting:
+## Troubleshooting:
 
 > "My responses are limited, you must ask the right questions." - Dr. Alfred Lanning - I, Robot
 
@@ -141,9 +141,9 @@ Traceback (most recent call last):
     outarray.pop() #Fixes duplicate entry at end of array (bug)
 IndexError: pop from empty list
 ```
-If you've got more than one line some valid and some with invalid instructions, the result won't crash the compiler, but it won't process things right and you might end up with only one instruction processed after the broken ones. Double and Triple check to make sure you've got the right instructions.
+If you've got more than one line some valid and some with invalid instructions, the result won't crash the compiler, but it won't process things right and you might end up with only one instruction processed after the broken ones. Double and triple check to make sure you've got the right instructions.
 
-If you missed the math on the Stack OR writing to the wrong memory (ie, with the memory filling program in the ```infile```), were gonna have a fun time with another error.
+If you missed the math on the Stack OR writing to the wrong memory (ie, with the memory filling program in the ```infile```), we're gonna have a fun time with another error.
 
 ```
 =========================
@@ -163,6 +163,11 @@ IndexError: list assignment index out of range
 The "RAM" is just another list, so if you go outside the bounds, it's not gonna like it. 
 
 > "Program Terminated"
+
+## Tips and Tricks
+
+
+
 
 
 [To be Continued]
