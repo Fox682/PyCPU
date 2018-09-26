@@ -113,7 +113,7 @@ nop = A No OPeration instruction, useful if you need to burn time and/or for deb
 ```
 
 
-## Troubleshooting:
+## Compiler Troubleshooting:
 
 > "My responses are limited, you must ask the right questions." - Dr. Alfred Lanning - I, Robot
 
@@ -165,6 +165,27 @@ The "RAM" is just another list, so if you go outside the bounds, it's not gonna 
 > "Program Terminated"
 
 ## Tips and Tricks
+
+Here's some trick and things you can do with the CPU instructions. Since this CPU isn't as full featured as say x86 Assembly, we'll need to use some extra steps to do equivilent things.
+
+### XCHG (x86)
+The PyCPU doesn't have a way to exchange the registers using a single instruction however you can do it with the Stack! Say you loaded some values and you're doing some math, but you want the result in ```bx``` instead of ```ax``` (or any other register). You can exchange the values in both registers, using this:
+
+```
+ldi ax,10
+ldi bx,20 #Load up the values
+mul ax,bx #Multiply, result in ax
+push ax #Exchange values!
+push bx
+pop ax
+pop bx #Done!
+0
+```
+
+Now the results should be in bx instead! Observant assemblers will note that this is exactly the opposite way you normally use the stack, by default you always pop the values in the exact opposite way you pushed them in the first place. But if you're purposefully exchanging the values, this is exactly ok.
+
+### Add Multiple values
+
 
 
 
