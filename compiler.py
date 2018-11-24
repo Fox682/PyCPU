@@ -7,7 +7,7 @@ ctr = 0 #counter
 #Vars
 acc = 0
 tgl = 1
-sel = 0
+#sel = 0
 #splitting
 s1 = 0
 s2 = 0
@@ -237,23 +237,28 @@ outarray.append('0') #Tells the CPU & Compiler to stop
 print ("====================")
 print(">> outrray <<")
 print(outarray)
-### 2nd Pass for JMPs to have Labels
-### Ensure Above works before doing this...
-#while tgl == 1:
-#    a = lines[acc] #Array + value in [slot]
-# #   print (a) #print the array value
-#    acc+=1 #increment the counter
-#    if a == '0': #not actual value but ASCII value...
-#        tgl = 0 #Stops the While loop when a == 0!
-#
-# Need to count the distance between the Labels
-#
-#
-# Iterate over the Array
-#Scan for Labels [Pick a format for them]
-# Use the Split above to split the jmp and the Value
-# if  a = "jmp"
-# then Use s2 to track the labels
+print ("====================")
+print("Processing Labels...")
+
+
+
+#### Label Maker
+# Will need to Mark them with a character ";" probably
+# Python Pseudo Code
+#if it contains a ";"
+#   Store this value as a number (doesn't matter how) and get the value of acc as a number,value pair dictionary
+#   Look for a jmp if the value is NOT a number
+#       Subtract the current acc value with the matching acc value in the dictionary
+#       output to the array jmp+value computed
+#       Else break out of here and keep looking
+#   If we got a "0"
+#       Dump the dictionary to the file array also
+#   Break out of this loop, go back to processing instructions
+
+
+
+
+
 
 
 #Writes the "list" to the file!

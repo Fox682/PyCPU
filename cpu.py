@@ -25,11 +25,34 @@ m = 25
 #Stack init
 bp = m-1
 sp = m
-#bp = 0
-#sp = 0
+
 ###
 flag = 0 #Use an int use str(flag) to convert it to a string
 #Flag for CMP  values
+
+
+# Screen output here:
+'''
+#adjust this to fit a smaller screen
+#may need to convert from int to ansi/ascii
+
+screen_buff = [' ' for x in range(1920)]
+## 1360?
+
+def blit_screen():
+    print(*screen_buff, sep='')
+
+print(chr(value)) # will print value as a character value (ie. 'c' as 99)
+- Might need a for loop to print instead
+
+Keyboard input:
+ord('a') # will print the value of 'a' (97)
+- shove this into the Array
+- Keyboard needs to be configurable to the destination of the buffer
+
+Print will need to display the values in memory as characters
+needs to be extendable to include the range to print and IF to print or not.
+'''
 
 #Local Memory for CPU, set for as much as needed
 mem = [0 for x in range(m)]
@@ -38,7 +61,7 @@ lines = [line.rstrip('\n') for line in open('outfile')] #creates array with char
 
 while on == 1:
     while tgl == 1:
-        sleep(0.1) #Sleep 0.10 == 10 Cycles per Second, 0.001 = 1 ms (1khz), Sleep 0.0001 = 0.1ms (10khz)
+        sleep(0.01) #Sleep 0.10 == 10 Cycles per Second, 0.001 = 1 ms (1khz), Sleep 0.0001 = 0.1ms (10khz)
         a = lines[acc] #Array + value in [slot]
         acc = acc + 1
         if a == '0':
